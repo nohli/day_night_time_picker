@@ -1,16 +1,16 @@
+import 'package:day_night_time_picker/lib/constants.dart';
 import 'package:flutter/material.dart';
-import './utils.dart';
 
 /// [Widget] for rendering the Sun and Moon Asset
 class SunMoon extends StatelessWidget {
   /// Whether currently the Sun is displayed
-  final bool isSun;
+  final bool? isSun;
 
   /// The Image asset for the sun
-  final Image sunAsset;
+  final Image? sunAsset;
 
   /// The Image asset for the moon
-  final Image moonAsset;
+  final Image? moonAsset;
 
   /// Initialize the Class
   SunMoon({
@@ -26,20 +26,20 @@ class SunMoon extends StatelessWidget {
       child: AnimatedSwitcher(
         switchInCurve: Curves.ease,
         switchOutCurve: Curves.ease,
-        duration: Duration(milliseconds: 250),
-        child: isSun
+        duration: const Duration(milliseconds: 250),
+        child: isSun!
             ? Container(
-                key: ValueKey(1),
+                key: const ValueKey(1),
                 child: sunAsset ??
-                    Image(
+                    const Image(
                       image: AssetImage(
                         "packages/day_night_time_picker/assets/sun.png",
                       ),
                     ))
             : Container(
-                key: ValueKey(2),
+                key: const ValueKey(2),
                 child: moonAsset ??
-                    Image(
+                    const Image(
                       image: AssetImage(
                           "packages/day_night_time_picker/assets/moon.png"),
                     ),
@@ -52,8 +52,8 @@ class SunMoon extends StatelessWidget {
               child: SlideTransition(
                 position: anim.drive(
                   Tween(
-                    begin: Offset(0, 4),
-                    end: Offset(0, 0),
+                    begin: const Offset(0, 4),
+                    end: const Offset(0, 0),
                   ),
                 ),
                 child: child,
